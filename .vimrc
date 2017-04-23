@@ -6,7 +6,7 @@
 "    By: rchiorea <rchiorea@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2017/04/23 17:26:39 by rchiorea          #+#    #+#              "
-"    Updated: 2017/04/23 17:52:51 by rchiorea         ###   ########.fr        "
+"    Updated: 2017/04/23 21:33:10 by rchiorea         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -38,6 +38,7 @@ Plugin 'xolox/vim-easytags'
 Plugin 'majutsushi/tagbar'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'vim-scripts/a.vim'
+Plugin 'SingleCompile'
 
 " ===== Vim Git plugins ========================================================
 
@@ -153,6 +154,11 @@ augroup END
 " ===== jez/vim-superman ====================================================
 
 noremap K :SuperMan <cword><CR>
+
+" ===== SingleCompile =======================================================
+
+nmap <F9> :SCCompile<cr>
+nmap <F10> :SCCompileRun<cr>
 
 " ===== Cool line at 80 char ===================================================
 
