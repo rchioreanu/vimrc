@@ -6,7 +6,7 @@
 "    By: rchiorea <rchiorea@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2017/04/23 17:26:39 by rchiorea          #+#    #+#              "
-"    Updated: 2017/04/23 21:33:10 by rchiorea         ###   ########.fr        "
+"    Updated: 2017/04/24 09:15:15 by rchiorea         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -92,6 +92,7 @@ set nu
 set mouse=a
 syntax on
 hi clear SignColumn
+colorscheme moriarty
 
 " ===== Plugin settings ========================================================
 
@@ -99,7 +100,6 @@ hi clear SignColumn
 
 set background=dark
 let g:solarized_termcolors=256
-colorscheme solarized
 
 " ===== bling/vim-airline ===================================================
 
@@ -107,12 +107,12 @@ set laststatus=2
 let g:airline_detect_paste=1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='solarized'
-let g:airline_powerline_fonts = 1
 
 " ===== jistr/vim-nerdtree-tabs =============================================
 
 nmap <silent> <leader>t :NERDTreeTabsToggle<CR>
-let g:nerdtree_tabs_open_on_console_startup = 1
+map <C-n> :NERDTreeToggle<CR>
+let g:nerdtree_tabs_open_on_console_startup = 0
 
 " ===== scrooloose/syntastic ================================================
 
