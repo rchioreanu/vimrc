@@ -6,7 +6,7 @@
 "    By: rchiorea <rchiorea@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2017/04/23 17:26:39 by rchiorea          #+#    #+#              "
-"    Updated: 2017/04/24 09:15:15 by rchiorea         ###   ########.fr        "
+"    Updated: 2017/04/28 08:43:16 by rchiorea         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -93,6 +93,7 @@ set mouse=a
 syntax on
 hi clear SignColumn
 colorscheme moriarty
+inoremap { {<CR>}<Esc>O
 
 " ===== Plugin settings ========================================================
 
