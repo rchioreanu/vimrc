@@ -1,0 +1,10 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/nfs/zfs-student-6/users/2016_cluj/rchiorea/.vim'
+let g:netrw_dirhist_2='/nfs/zfs-student-6/users/2016_cluj/rchiorea/exam-basedir/subjects/only_z'
+let g:netrw_dirhist_3='/nfs/zfs-student-6/users/2016_cluj/rchiorea/exam-basedir/subjects/repeat_alpha'
+let g:netrw_dirhist_4='/nfs/zfs-student-6/users/2016_cluj/rchiorea/bkis2/includes'
+let g:netrw_dirhist_5='/nfs/zfs-student-6/users/2016_cluj/rchiorea/Proiecte/ft_printf'
+let g:netrw_dirhist_6='/nfs/zfs-student-6/users/2016_cluj/rchiorea/Proiecte/Piscine-PHP/d01/ex00'
+let g:netrw_dirhist_7='/nfs/zfs-student-6/users/2016_cluj/rchiorea/Proiecte/Piscine-PHP/d01/ex08'
+let g:netrw_dirhist_8='/nfs/zfs-student-6/users/2016_cluj/rchiorea/.vim'
