@@ -6,7 +6,7 @@
 "    By: rchiorea <rchiorea@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2017/04/23 17:26:39 by rchiorea          #+#    #+#              "
-"    Updated: 2017/04/28 08:43:16 by rchiorea         ###   ########.fr        "
+"    Updated: 2017/05/30 15:20:17 by rchiorea         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -28,8 +28,13 @@ Plugin 'tomasr/molokai'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
+" ===== Vim hard mode - experimental ===========================================
+
+Plugin 'wikitopian/hardmode'
+
 " ===== Vim for programming ====================================================
 
+Plugin 'shougo/vimproc.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'vim-syntastic/syntastic'
@@ -39,6 +44,8 @@ Plugin 'majutsushi/tagbar'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'vim-scripts/a.vim'
 Plugin 'SingleCompile'
+Plugin 'severin-lemaignan/vim-minimap'
+Plugin 'stanangeloff/php.vim'
 
 " ===== Vim Git plugins ========================================================
 
@@ -48,6 +55,8 @@ Plugin 'tpope/vim-fugitive'
 " ===== Vim autocompletion plugins =============================================
 
 Plugin 'Raimondi/delimitMate'
+Plugin 'shawncplus/phpcomplete.vim'
+Plugin 'm2mdas/phpcomplete-extended'
 
 " ===== Man and tmux integration ===============================================
 
@@ -62,6 +71,7 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'HTML-AutoCloseTag'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'tpope/vim-surround'
+Plugin '2072/php-indenting-for-vim'
 
 call vundle#end()
 
@@ -94,8 +104,13 @@ syntax on
 hi clear SignColumn
 colorscheme moriarty
 inoremap { {<CR>}<Esc>O
+runtime macros/matchit.vim
 
 " ===== Plugin settings ========================================================
+
+" ===== wikitopian/hardmode =================================================
+
+autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
 
 " ===== altercation/vim-colors-solarized ====================================
 
@@ -160,6 +175,20 @@ noremap K :SuperMan <cword><CR>
 
 nmap <F9> :SCCompile<cr>
 nmap <F10> :SCCompileRun<cr>
+
+" ===== PHP =================================================================
+
+php_syntax_extensions_enabled
+
+function! PhpSyntaxOverride()
+  hi! def link phpDocTags  phpDefine
+    hi! def link phpDocParam phpType
+endfunction
+
+augroup phpSyntaxOverride
+	  autocmd!
+	    autocmd FileType php call PhpSyntaxOverride()
+	augroup END
 
 " ===== Cool line at 80 char ===================================================
 
