@@ -1,80 +1,73 @@
-" **************************************************************************** "
-"                                                                              "
-"                                                         :::      ::::::::    "
-"    .vimrc                                             :+:      :+:    :+:    "
-"                                                     +:+ +:+         +:+      "
-"    By: rchiorea <rchiorea@student.42.fr>          +#+  +:+       +#+         "
-"                                                 +#+#+#+#+#+   +#+            "
-"    Created: 2017/04/23 17:26:39 by rchiorea          #+#    #+#              "
-"    Updated: 2017/06/03 22:34:52 by rchiorea         ###   ########.fr        "
-"                                                                              "
-" **************************************************************************** "
-
-" ===== VundleVim config =======================================================
+" ===== Plug config ============================================================
 
 set nocompatible
 
 filetype off
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+if empty(glob('~/.config/nvim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-Plugin 'VundleVim/Vundle.vim'
+call plug#begin('~/.config/nvim/plugins')
 
 " ===== Vim appearance plugins =================================================
 
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'tomasr/molokai'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+Plug 'altercation/vim-colors-solarized'
+Plug 'tomasr/molokai'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " ===== Vim hard mode - experimental ===========================================
 
-Plugin 'wikitopian/hardmode'
+Plug 'wikitopian/hardmode'
 
 " ===== Vim for programming ====================================================
 
-Plugin 'shougo/vimproc.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'vim-syntastic/syntastic'
-Plugin 'nrocco/vim-phplint'
-Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-easytags'
-Plugin 'majutsushi/tagbar'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'vim-scripts/a.vim'
-Plugin 'SingleCompile'
-Plugin 'severin-lemaignan/vim-minimap'
-Plugin 'stanangeloff/php.vim'
+Plug 'shougo/vimproc.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'vim-syntastic/syntastic'
+Plug 'nrocco/vim-phplint'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-easytags'
+Plug 'majutsushi/tagbar'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'vim-scripts/a.vim'
+Plug 'severin-lemaignan/vim-minimap'
+Plug 'alvan/vim-closetag'
+Plug 'stanangeloff/php.vim'
+Plug 'neovim/python-client'
 
 " ===== Vim Git plugins ========================================================
 
-Plugin 'airblade/vim-gitgutter'
-Plugin 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
 
 " ===== Vim autocompletion plugins =============================================
 
-Plugin 'Raimondi/delimitMate'
-Plugin 'shawncplus/phpcomplete.vim'
-Plugin 'm2mdas/phpcomplete-extended'
+Plug 'Raimondi/delimitMate'
+Plug 'shawncplus/phpcomplete.vim'
+Plug 'm2mdas/phpcomplete-extended'
 
 " ===== Man and tmux integration ===============================================
 
-Plugin 'jez/vim-superman'
-Plugin 'christoomey/vim-tmux-navigator'
+Plug 'jez/vim-superman'
+Plug 'christoomey/vim-tmux-navigator'
 
 " ===== Syntax plugin ==========================================================
 
-Plugin 'jez/vim-c0'
-Plugin 'jez/vim-ispc'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'HTML-AutoCloseTag'
-Plugin 'ntpeters/vim-better-whitespace'
-Plugin 'tpope/vim-surround'
-Plugin '2072/php-indenting-for-vim'
+Plug 'jez/vim-c0'
+Plug 'jez/vim-ispc'
+Plug 'kchmck/vim-coffee-script'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'tpope/vim-surround'
+Plug '2072/php-indenting-for-vim'
+Plug 'honza/vim-snippets'
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 
-call vundle#end()
+call plug#end()
 
 filetype plugin indent on
 
@@ -159,7 +152,6 @@ let g:airline#extensions#hunks#non_zero_only = 1
 
 " ===== Raimondi/delimitMate ================================================
 
-let delimitMate_expand_cr = 1
 augroup mydelimitMate
 	au!
 	au FileType markdown let b:delimitMate_nesting_quotes = ["`"]
@@ -188,6 +180,10 @@ augroup phpSyntaxOverride
 	  autocmd!
 	    autocmd FileType php call PhpSyntaxOverride()
 	augroup END
+
+" ===== YouCompleteMe =======================================================
+
+let g:python_host_prog = '/usr/local/bin/python'
 
 " ===== Cool line at 80 char ===================================================
 
