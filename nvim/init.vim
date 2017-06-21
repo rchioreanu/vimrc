@@ -4,12 +4,6 @@ set nocompatible
 
 filetype off
 
-if empty(glob('~/.config/nvim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-
 call plug#begin('~/.config/nvim/plugins')
 
 " ===== Vim appearance plugins =================================================
@@ -28,7 +22,7 @@ Plug 'wikitopian/hardmode'
 Plug 'shougo/vimproc.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
-Plug 'vim-syntastic/syntastic'
+" Plug 'vim-syntastic/syntastic'
 Plug 'nrocco/vim-phplint'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-easytags'
@@ -39,6 +33,7 @@ Plug 'severin-lemaignan/vim-minimap'
 Plug 'alvan/vim-closetag'
 Plug 'stanangeloff/php.vim'
 Plug 'neovim/python-client'
+Plug 'w0rp/ale'
 
 " ===== Vim Git plugins ========================================================
 
@@ -51,10 +46,11 @@ Plug 'Raimondi/delimitMate'
 Plug 'shawncplus/phpcomplete.vim'
 Plug 'm2mdas/phpcomplete-extended'
 
-" ===== Man and tmux integration ===============================================
+" ===== Man and Vim integration ================================================
 
 Plug 'jez/vim-superman'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'rchioreanu/autoswap_mac'
 
 " ===== Syntax plugin ==========================================================
 
@@ -74,6 +70,19 @@ filetype plugin indent on
 
 " ===== General settings =======================================================
 
+function Save()
+	:echom "Use <C-S>"
+endfunction
+
+function Exit()
+	:echom "Use <C-X>"
+endfunction
+
+function Quit()
+	:echom "Use <C-Q>"
+endfunction
+
+set title titlestring=
 set smartindent
 set tabstop=4
 set shiftwidth=4
@@ -91,6 +100,7 @@ set showmatch
 set hlsearch
 set ruler
 set number
+set relativenumber
 set showcmd
 set nu
 set mouse=a
@@ -98,7 +108,18 @@ syntax on
 hi clear SignColumn
 colorscheme moriarty
 inoremap { {<CR>}<Esc>O
+nmap :Q :q
+nmap :W :w
 runtime macros/matchit.vim
+nnoremap <C-X> :wq<ENTER>
+inoremap <C-X> <Esc>:wq<ENTER>
+nnoremap <C-S> :w<ENTER>
+nnoremap <C-Q> :q<ENTER>
+inoremap <C-S> <Esc>:w<ENTER>
+inoremap <C-Q> <Esc>:q<ENTER>
+nnoremap :w<ENTER> :call Save()<ENTER>
+nnoremap :x<ENTER> :call Exit()<ENTER>
+nnoremap :q<ENTER> :call Quit()<ENTER>
 
 " ===== Plugin settings ========================================================
 
@@ -126,12 +147,12 @@ let g:nerdtree_tabs_open_on_console_startup = 0
 
 " ===== scrooloose/syntastic ================================================
 
-let g:syntastic_error_symbol = '✘'
-let g:syntastic_warning_symbol = "▲"
-augroup mySyntastic
-	au!
-	au FileType tex let b:syntastic_mode = "passive"
-augroup END
+"let g:syntastic_error_symbol = '✘'
+"let g:syntastic_warning_symbol = "▲"
+"augroup mySyntastic
+"	au!
+"	au FileType tex let b:syntastic_mode = "passive"
+"augroup END
 
 " ===== xolox/vim-easytags ==================================================
 
