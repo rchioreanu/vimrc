@@ -44,12 +44,12 @@ Plug 'tpope/vim-fugitive'
 Plug 'Raimondi/delimitMate'
 Plug 'shawncplus/phpcomplete.vim'
 Plug 'm2mdas/phpcomplete-extended'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " ===== Man and Vim integration ================================================
 
 Plug 'jez/vim-superman'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'rchioreanu/autoswap_mac'
 
 " ===== Syntax plugin ==========================================================
 
@@ -88,6 +88,7 @@ function Sleep()
     :!open -a /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app
 endfunction
 
+set clipboard+=unnamedplus  " use clipboard ( see : help clipboard )
 set title titlestring=
 set smartindent
 set tabstop=4
@@ -110,6 +111,7 @@ set relativenumber
 set showcmd
 set nu
 set mouse=a
+set shell=/bin/sh
 set t_CO=256
 syntax on
 hi clear SignColumn
@@ -129,6 +131,13 @@ nnoremap :x<ENTER> :call Exit()<ENTER>
 nnoremap :q<ENTER> :call Quit()<ENTER>
 nmap <C-W> :call Sleep()<ENTER>
 imap <C-W> :call Sleep()<ENTER>
+
+" ===== Python config ==========================================================
+
+let g:python_host_prog  = '/usr/local/bin/python'
+let g:python3_host_prog = '/usr/local/bin/python3'
+let g:py_host_prog  = '/usr/local/bin/python'
+let g:py3_host_prog = '/usr/local/bin/python3'
 
 " ===== Plugin settings ========================================================
 
